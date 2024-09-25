@@ -30,7 +30,10 @@ jobs:
       run: node shortner.js
 
     # Step 5: Deploy to Firebase Hosting
-    - name: Deploy to Firebase Hosting
-      run: firebase deploy --only hosting:rsh
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_IRSH_2352C }}
+    - run: n
+    - uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+        repoToken: ${{ secrets.GITHUB_TOKEN }}
+        firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_IRSH_2352C }}
+        channelId: live
+        projectId: rsh
