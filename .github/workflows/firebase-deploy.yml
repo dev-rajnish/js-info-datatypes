@@ -1,0 +1,36 @@
+name: Firebase Redirect Deploy
+
+# Run the workflow on pushes to the main branch
+on:
+  push:
+    branches:
+      - master  # You can replace this with your branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the code from your GitHub repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js to run your script
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Step 4: Run your Node.js script to update firebase.json
+    - name: Run redirect script
+      run: node shortner.js
+
+    # Step 5: Deploy to Firebase Hosting
+    - name: Deploy to Firebase Hosting
+      run: firebase deploy --only hosting:rsh
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

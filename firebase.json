@@ -1,16 +1,22 @@
 {
   "hosting": {
-    "public": "public",
-    "site" :"rsh",
+    "public": "./public",
+    "site": "rsh",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "redirects": [
       {
-        "source": "**",
-        "destination": ""
+        "source": "/go",
+        "destination": "https://google.com",
+        "type": 301
+      },
+      {
+        "source": "/hello",
+        "destination": "https://example.com/EDITED",
+        "type": 301
       }
     ]
   }
