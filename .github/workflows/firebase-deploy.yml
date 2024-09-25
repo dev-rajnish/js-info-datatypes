@@ -22,8 +22,8 @@ jobs:
         node-version: '18.x'
 
     # Step 3: Install dependencies
-    #- name: Install dependencies
-     # run: npm install
+    - name: Install dependencies
+      run: npm install -g firebase-tools
 
     # Step 4: Run your Node.js script to update firebase.json
     - name: Run redirect script
