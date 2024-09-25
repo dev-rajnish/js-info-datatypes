@@ -30,7 +30,7 @@ jobs:
       run: node shortner.js
 
     # Step 5: Deploy to Firebase Hosting
-    - run: n
+    - run: npm
     - uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         repoToken: ${{ secrets.GITHUB_TOKEN }}
